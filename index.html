@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <title>VUE</title>
+        <link rel="stylesheet" href="bootstrap.min.css" />
+        <link rel="stylesheet" href="estilos.css" />
+    </head>
+    <body>
+        <nav id="menuPrincipal">
+            <h1>
+                <p class="opcionMenuPrincipal" href="index.html">Cafeteria "Cubic World"</p>
+            </h1>
+        </nav>
+        <section id="cont">
+            <div class="row">
+                <div id="caja" class="col-md-6 offset-md-1">
+
+                    <h2>Vebidas</h2>
+                   <input type="search" v-model="busqueda" placeholder="Buscar Cafe">
+                   <ul class="list-unstyled">
+                       <li v-for="cafe in buscarCafe">
+                           <!---Imprimir el arreglo de datos-->
+                           {{cafe.titulo}}---${{cafe.precio}} Pesos
+                       </li>
+                   </ul>
+                   <h2>Precio de Vevidas</h2>
+                   <input type="number" min="0" max="25" v-model="minimo" placeholder="Buscar Por Precio">
+                   <ul class="list-unstyled">
+                    <li v-for="cafe in mejoresCafes">
+                        <!---Imprimir el arreglo de datos-->
+                        {{cafe.titulo}}---${{cafe.precio}} Pesos---{{cafe.estatus}}---Ingredientes: {{cafe.ingredientes}}
+                    </li>
+                    </ul>
+                    <h2>Pedidos</h2>
+                    <label>Agregar Pedido:</label>
+                    <input type="text" v-model="caf" @keyup.enter="agregar()">
+                    <button @click="agregar()">Agregar</button>
+                    <ul>
+                    <li v-for="(ca, index) in pedido" :key="index">{{ca}}</li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+        <footer id="col" class="text-center">
+            <span id="foot">Por: José Guadalupe @2021</span>
+        </footer>
+
+        <script src="vue.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
